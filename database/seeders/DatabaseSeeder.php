@@ -21,11 +21,7 @@ class DatabaseSeeder extends Seeder
             GenreSeeder::class,
             AuthorSeeder::class,
             BookSeeder::class,
-        ]);
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            UserSeeder::class,
         ]);
     }
 }
