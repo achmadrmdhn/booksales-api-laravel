@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             AuthorSeeder::class,
             BookSeeder::class,
             UserSeeder::class,
+            TransactionSeeder::class,
         ]);
     }
 }

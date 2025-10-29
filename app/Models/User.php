@@ -23,7 +23,7 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
-        'role'
+        'role',
     ];
 
     /**
@@ -45,16 +45,35 @@ class User extends Authenticatable implements JWTSubject
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password' => 'hashed', // gunakan Hash::make di controller jika kamu menonaktifkan cast ini
         ];
     }
 
-    // ----------------------------------------
-    public function getJWTIdentifier() {
+    /**
+     * Get the transactions that belong to the user (as customer).
+     *
+     * A user can have many transactions.
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'customer_id');
+    }
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     */
+    public function getJWTIdentifier()
+    {
         return $this->getKey();
     }
 
-    public function getJWTCustomClaims() {
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array<string, mixed>
+     */
+    public function getJWTCustomClaims()
+    {
         return [];
     }
 }
