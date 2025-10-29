@@ -12,13 +12,10 @@ Route::get('/user', function (Request $request) {
 
 
 // Route untuk daftar genre
-Route::get('/genres', [GenreController::class, 'index']);
-Route::post('/genres', [GenreController::class, 'store']);
+Route::apiResource('/genres', GenreController::class);
 
 // Route untuk daftar penulis
-Route::get('/authors', [AuthorController::class, 'index']);
-Route::post('/authors', [AuthorController::class, 'store']);
+Route::apiResource('/authors', AuthorController::class);
 
 // Route untuk daftar buku
-Route::get('/books', [BookController::class, 'index']);
-Route::post('/books', [BookController::class, 'store']);
+Route::apiResource('/books', BookController::class);
